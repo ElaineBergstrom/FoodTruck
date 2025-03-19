@@ -4,6 +4,7 @@ import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -38,14 +39,15 @@ fun CardInfo (
     showRating: Boolean,
 ) {
     Column (
+        modifier = Modifier
+            .fillMaxSize()
     ){
         AsyncImage(
             model = restaurant.imageUrl,
             contentDescription = "Image of ${restaurant.name}",
             contentScale = ContentScale.Crop,
             modifier = Modifier
-                .fillMaxWidth()
-                .height(180.dp)
+                .fillMaxSize()
         )
         Column (
             modifier = Modifier.padding(16.dp)
@@ -77,7 +79,7 @@ fun CardInfo (
 
             Spacer(modifier = Modifier.height(8.dp))
 
-            if (showRating && restaurant.deliveryTimeMinutes != null){
+            if (showRating){
             IconRow(
                 icon = IconType.DrawableResourceIcon(R.drawable.clock_icon),
                 iconTint = Color.Red,
